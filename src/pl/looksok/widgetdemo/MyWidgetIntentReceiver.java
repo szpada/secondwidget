@@ -3,7 +3,6 @@ package pl.looksok.widgetdemo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.sax.StartElementListener;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -25,6 +24,11 @@ public class MyWidgetIntentReceiver extends BroadcastReceiver {
 		}
 	}
 
+	/*
+	 * TEST SPRAWDZAJACY CZY TO GOWNMO DZIALA 
+	 * 
+	 */
+	
 	private void updateMoney(Context context){
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_demo);
 		
