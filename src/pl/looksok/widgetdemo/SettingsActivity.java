@@ -10,10 +10,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.widget.zapis.SaveService;
+import com.widget.zapis.UserSettings;
+
 public class SettingsActivity extends Activity{
 	
 	private Button ok;
 	private EditText salary;
+	
+	private SaveService saver;
 	
 	private Context baseContext;
 	
@@ -61,21 +66,39 @@ public class SettingsActivity extends Activity{
 //    		view.releaseSounds();
 //    	}
    	Log.d("GameActivity", "MYonPause is called");
-//    	saveState();
+   	saveState();
 //    	resuming=true; //so that on resume you can read in last state
 	}
 	
-	
+
+
+
 	protected void onResume() {
         super.onResume();
-//        if(view != null){
-//        	view.prepareSounds();
-//        }
+
         Log.d("GameActivity", "!jestem w GameActivity.onResume()");
-//        if (resuming) { //only if the game is being resumed, o/w the game that's sitting in the save file is not relevant
-//        	readSavedState();
-//        	Log.d("GameActivity", "read last saved state");
-//            
-        }
+        loadSettings();
+}
+	
+	
+	private void loadSettings() {
+		 UserSettings saved = saver.readSettings("user_settings");
+		 if (saved==null) {
+			 saved = new UserSettings();	
+		 }
+		 salary.setText(Integer.toString(saved.getSalary()));  
+		 Log.d("OptionsTab", "wczytando" );
+		 
+	
+	}
+	
+	private void saveState() {
+		UserSettings saved = new UserSettings();
+		saved.setSalary(Integer.parseInt(this.salary.getText().toString()));
+       saver.saveSettings(saved, "user_settings");
+       Log.d("OptionsTab", "SAVED SETTINGS");
+       
+	}
+	
 	
 }
