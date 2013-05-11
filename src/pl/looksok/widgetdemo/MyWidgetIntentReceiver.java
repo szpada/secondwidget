@@ -12,6 +12,8 @@ public class MyWidgetIntentReceiver extends BroadcastReceiver {
 	
 	private double money = 0.0;
 	
+	private String currency = "PLN";
+	
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		Log.d("MyWidgetIntentReceiver", "otrzymalem " + intent);
@@ -33,7 +35,7 @@ public class MyWidgetIntentReceiver extends BroadcastReceiver {
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_demo);
 		
 		money+= 0.1;
-		remoteViews.setTextViewText(R.id.money, Double.toString(money) + " PLN");
+		remoteViews.setTextViewText(R.id.money, Double.toString(money) + " " + currency);
 		
 		//REMEMBER TO ALWAYS REFRESH YOUR BUTTON CLICK LISTENERS!!!
 		//remoteViews.setOnClickPendingIntent(R.id.widget_button, MyWidgetProvider.buildButtonPendingIntent(context));
@@ -43,7 +45,7 @@ public class MyWidgetIntentReceiver extends BroadcastReceiver {
 	
 	private int getImageToSet() {
 		clickCount++;
-		return clickCount % 2 == 0 ? R.drawable.me : R.drawable.wordpress_icon;
+		return clickCount % 2 == 0 ? R.drawable.me : R.drawable.wordpress_icon; //chciales zaszpanowac ze znasz taka skladnie kurwa
 	
 	}
 }

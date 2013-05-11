@@ -42,4 +42,40 @@ public class SettingsActivity extends Activity{
 			}
 		});
 	}
+	
+	
+	protected void onStop() 
+    {
+        super.onStop();
+        
+        
+        Log.d("GameActivity", "MYonStop is called");
+        
+        finish();
+    }
+    
+    
+    protected void onPause() {
+    	super.onPause();
+//    	if(view != null){
+//    		view.releaseSounds();
+//    	}
+   	Log.d("GameActivity", "MYonPause is called");
+//    	saveState();
+//    	resuming=true; //so that on resume you can read in last state
+	}
+	
+	
+	protected void onResume() {
+        super.onResume();
+//        if(view != null){
+//        	view.prepareSounds();
+//        }
+        Log.d("GameActivity", "!jestem w GameActivity.onResume()");
+//        if (resuming) { //only if the game is being resumed, o/w the game that's sitting in the save file is not relevant
+//        	readSavedState();
+//        	Log.d("GameActivity", "read last saved state");
+//            
+        }
+	
 }
