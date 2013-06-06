@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/wordpress_icon" />
-		
+    
     <TextView
         android:id="@+id/money"
         android:layout_width="match_parent"
